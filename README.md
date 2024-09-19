@@ -10,7 +10,7 @@
 |first_name         |string     |null: false                     |
 |last_name_kana     |string     |null: false                     |
 |first_name_kana    |string     |null: false                     |
-|date               |string     |null: false                     |
+|birth              |date       |null: false                     |
 
 ### Association
 has_many :items
@@ -33,7 +33,7 @@ has_many :orders
 belongs_to  :user
 has_one     :order
 
-## orders
+## orders table
 |Column             |Type       |Options                         | 
 |-------------------|-----------|--------------------------------|
 |user               |references |null: false, foreign_key: true  |
@@ -44,7 +44,7 @@ belongs_to :user
 belongs_to :item
 has_one    :shipping
 
-## shipping
+## shippings table
 |Column             |Type       |Options                         | 
 |-------------------|-----------|--------------------------------|
 |post_code          |string     |null: false                     |
@@ -53,6 +53,7 @@ has_one    :shipping
 |address            |string     |null: false                     |
 |phone_number       |string     |null: false                     |
 |order              |references |null: false, foreign_key: true  |
+|area_id            |integer    |null: false                     |
 
 ### Association
 belongs_to  :order
