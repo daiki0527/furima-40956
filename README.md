@@ -3,70 +3,67 @@
 ## users table
 |Column             |Type       |Options                         | 
 |-------------------|-----------|--------------------------------|
-|name               |string     |null: false                     |
+|nickname           |string     |null: false                     |
 |email              |string     |null: false,unique: true        |
-|user_password      |string     |null: false                     |
-|user_image         |string     |null: false                     |
+|encrypted_password |string     |null: false                     |
 |last_name          |string     |null: false                     |
 |first_name         |string     |null: false                     |
-|user               |references |null: false, foreign_key: true|
+|last_name_kana     |string     |null: false                     |
+|first_name_kana    |string     |null: false                     |
+|birth              |date       |null: false                     |
 
 ### Association
 has_many :items
-has_many :order
+has_many :orders
 
 ## items table
 |Column             |Type       |Options                         | 
 |-------------------|-----------|--------------------------------|
 |name               |string     |null: false                     |
-|price              |string     |null: false                     |
-|detail   　　　　　　|text       |null: false                     |
-|items_condition    |text       |null: false                     |
-|size               |string     |null: false                     |
-|cost               |string     |null: false                     |
+|explanation        |text       |null: false                     |
+|category_id        |integer    |null: false                     |
+|condition_id       |integer    |null: false                     |
+|charge_id          |integer    |null: false                     |
+|area_id            |integer    |null: false                     |
+|delivery_day_id    |integer    |null: false                     |
+|price              |integer    |null: false                     |
+|user               |references |null: false, foreign_key: true  |
 
 ### Association
-belongs_to　：user
-has_many    :order_items
+belongs_to  :user
+has_one     :order
 
-## order_items
+## orders table
 |Column             |Type       |Options                         | 
 |-------------------|-----------|--------------------------------|
-|items              |references |null: false, foreign_key: true  |
+|user               |references |null: false, foreign_key: true  |
+|item               |references |null: false, foreign_key: true  |
+
+### Association
+belongs_to :user
+belongs_to :item
+has_one    :shipping
+
+## shippings table
+|Column             |Type       |Options                         | 
+|-------------------|-----------|--------------------------------|
+|post_code          |string     |null: false                     |
+|state              |string     |null: false                     |
+|municipalities     |string     |null: false                     |
+|address            |string     |null: false                     |
+|phone_number       |string     |null: false                     |
 |order              |references |null: false, foreign_key: true  |
-|order_items  　　　 |references |null: false                     |
+|area_id            |integer    |null: false                     |
 
 ### Association
-belongs_to　：items
-belongs_to　：order
+belongs_to  :order
 
-## order
-|Column             |Type       |Options                         | 
-|-------------------|-----------|--------------------------------|
-|user               |references |null: false, foreign_key: true  |
-|size               |string     |null: false                     |
-|price        　　　 |string     |null: false                     |
-|name               |string     |null: false                     |
 
-### Association
-has_many :order_items
-has_one  :shipping
-
-## shipping
-|Column             |Type       |Options                         | 
-|-------------------|-----------|--------------------------------|
-|user               |references |null: false, foreign_key: true  |
-|total amount       |string     |null: false                     |
-|order_date       　|text        |null: false                    |
-|price              |string     |null: false                     |
-  
-### Association
-has_one  :order
-has_one  :items
 
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
+
 
 Things you may want to cover:
 
