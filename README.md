@@ -25,7 +25,7 @@ has_many :orders
 |condition_id       |integer    |null: false                     |
 |charge_id          |integer    |null: false                     |
 |area_id            |integer    |null: false                     |
-|day_id             |integer    |null: false                     |
+|delivery_day_id    |integer    |null: false                     |
 |price              |integer    |null: false                     |
 |user               |references |null: false, foreign_key: true  |
 
