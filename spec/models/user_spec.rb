@@ -17,7 +17,7 @@ RSpec.describe User, type: :model do
       end
       it 'encrypted_passwordが空では登録できない' do
       end
-      it 'encrypted_passwordと(確認)が不一致では登録できない' do
+      it 'confirmation_passwordとencrypted_passwordが不一致では登録できない' do
       end
       it 'nicknameが6文字以上では登録できない' do
       end
