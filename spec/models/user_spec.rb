@@ -7,7 +7,25 @@ RSpec.describe User, type: :model do
 
   describe 'ユーザー新規登録' do
     context '新規登録できるとき' do
-      it 'nicknameとemailとencrypted_passwordとlast_nameとfirst_nameとlast_name_kanaとfirst_name_kanaとbirthが存在すれば登録できる' do
+      it 'nicknameが存在すると登録出来る' do
+      end
+      it 'emailが存在すると登録できる' do
+      end
+      it 'encrypted_passwordが存在すると登録できる' do
+      end
+      it 'confirmation_passwordが存在すると登録できる' do
+      end
+      it 'onfirmation_passwordとencrypted_passwordが一致すると登録できる' do
+      end
+      it 'first_nameが存在すると登録できる' do
+      end
+      it 'last_nameが存在すると登録できる' do
+      end
+      it 'first_name_kanaが存在すると登録できる' do
+      end
+      it 'last_name_kanaが存在すると登録できる' do
+      end
+      it 'birthが存在すると登録できる' do
       end
     end
     context '新規登録できないとき' do
@@ -16,6 +34,10 @@ RSpec.describe User, type: :model do
       it 'emailが空では登録できない' do
       end
       it 'encrypted_passwordが空では登録できない' do
+      end
+      it 'encrypted_passwordは英字と数字の両方含めていないと登録できない' do
+      end
+      it 'confirmation_passwordが空では登録できない' do
       end
       it 'confirmation_passwordとencrypted_passwordが不一致では登録できない' do
       end
