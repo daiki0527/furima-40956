@@ -82,6 +82,31 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Birth can't be blank")
       end
+      it 'パスワードに半角英字だけでは登録できない' do
+        @user.password = 'aaaaaa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください')
+      end
+      it 'last_nameは半角入力では登録できない' do
+        @user.last_name = 'ｙａｍａｄａ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Last name 全角文字を使用してください')
+      end
+      it 'first_nameはは半角入力では登録できない' do
+        @user.first_name = 'ｔａｒｏ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('First name 全角文字を使用してください')
+      end
+      it 'last_name_kanaはひらがな入力では登録できない' do
+        @user.last_name_kana = 'やまだ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Last name kana はカタカナで入力してください')
+      end
+      it 'first_name_kanaはひらがな入力では登録できない' do
+        @user.first_name_kana = 'たろう'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('First name kana はカタカナで入力してください')
+      end
     end
   end
 end
