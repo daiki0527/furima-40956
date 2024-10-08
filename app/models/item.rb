@@ -11,7 +11,8 @@ class Item < ApplicationRecord
 
   validates :name, presence: true
   validates :explanation, presence: true
-  validates :price, presence: true
+  validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 10_000_000 },
+                    format: { with: /\A[0-9]+\z/, message: 'Price is invalid.harf-width characters' }
   validates :image, presence: true
   validates :category_id, presence: true
   validates :condition_id, presence: true
