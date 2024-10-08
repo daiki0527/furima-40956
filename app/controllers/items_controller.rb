@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
   def index
     @items = Item.includes(:user)
   end
@@ -14,6 +14,20 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       render :new
+    end
+  end
+
+  def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @items.update(item_params)
+      redirect_to item_path
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
