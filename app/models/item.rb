@@ -13,13 +13,7 @@ class Item < ApplicationRecord
   validates :explanation, presence: true
   validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 10_000_000 }
   validates :image, presence: true
-  validates :category_id, presence: true
-  validates :condition_id, presence: true
-  validates :charge_id, presence: true
-  validates :area_id, presence: true
-  validates :delivery_day_id, presence: true
-
-  validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :category_id,  numericality: { other_than: 1, message: "can't be blank" }
   validates :condition_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :charge_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :area_id, numericality: { other_than: 1, message: "can't be blank" }
