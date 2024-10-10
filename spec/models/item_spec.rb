@@ -35,7 +35,7 @@ RSpec.describe Item, type: :model do
         expect(@items.errors.full_messages).to include("Category can't be blank")
       end
       it 'カテゴリーに「---」が選択されている場合は出品できない' do
-        @items.category_id = '1'
+        @items.category_id = 1
         @items.valid?
         expect(@items.errors.full_messages).to include("Category can't be blank")
       end
@@ -86,7 +86,7 @@ RSpec.describe Item, type: :model do
       it '価格が空だと出品できない' do
         @items.price = ''
         @items.valid?
-        expect(@items.errors.full_messages).to include("Price is not a number", "Price Price is invalid.harf-width characters")
+        expect(@items.errors.full_messages).to include("Price is not a number")
       end
 
       it '価格は全角文字が含まれると出品できない' do

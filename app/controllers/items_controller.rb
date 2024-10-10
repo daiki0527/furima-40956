@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  def index
-    @items = Item.includes(:user)
-  end
+  before_action :authenticate_user!
+  # def index
+  # @items = Item.includes(:user)
+  # end
 
   def new
     @items = Item.new
@@ -23,13 +23,13 @@ class ItemsController < ApplicationController
   def edit
   end
 
-  def update
-    if @items.update(item_params)
-      redirect_to item_path
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
+  # def update
+  # if @items.update(item_params)
+  # redirect_to item_path
+  # else
+  # render :edit, status: :unprocessable_entity
+  # end
+  # end
 
   private
 
