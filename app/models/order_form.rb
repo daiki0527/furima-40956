@@ -14,7 +14,7 @@ class OrderForm
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
 
   def save
-    order_form = OrderForm.create(user_id:, item_id:)
-    Sending.create(post_code: post_code, prefecture_id: prefecture_id, city: city, address: address, building: building, telephone_number: telephone_number)
+    order = Order.create(user_id:, item_id:)
+    Sending.create(post_code: post_code, prefecture_id: prefecture_id, city: city, address: address, building: building, telephone_number: telephone_number, order_id: order_id)
   end
 end
