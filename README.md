@@ -42,12 +42,12 @@ has_one     :order
 ### Association
 belongs_to :user
 belongs_to :item
-has_one    :shipping
+has_one    :sending
 
-## shippings table
+## sending table
 |Column             |Type       |Options                         | 
 |-------------------|-----------|--------------------------------|
-|post_code          |string     |null: false                     |
+|postal_code        |string     |null: false                     |
 |state              |string     |null: false                     |
 |municipalities     |string     |null: false                     |
 |address            |string     |null: false                     |
