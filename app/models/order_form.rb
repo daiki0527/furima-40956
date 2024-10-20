@@ -1,6 +1,6 @@
 class OrderForm
   include ActiveModel::Model
-  attr_accessor :token, :user_id, :item_id, :postal_code, :prefecture_id, :city, :address, :building, :telephone_number
+  attr_accessor :token, :user_id, :item_id, :postal_code, :area_id, :city, :address, :building, :telephone_number
 
   with_options presence: true do
     validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
@@ -11,11 +11,11 @@ class OrderForm
     validates :address
     validates :token
   end
-  validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :area_id, numericality: { other_than: 1, message: "can't be blank" }
 
   def save
     order = Order.create(user_id:, item_id:)
-    Sending.create(postal_code:, prefecture_id:, city:, address:, building:,
+    Sending.create(postal_code:, area_id:, city:, address:, building:,
                    telephone_number:, order_id: order.id)
   end
 end
