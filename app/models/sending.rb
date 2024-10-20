@@ -1,7 +1,3 @@
 class Sending < ApplicationRecord
-  attr_accessor :token
-
-  belongs_to  :item
-  belongs_to  :user
-  has_one     :sending
+  belongs_to :order
 end
