@@ -3,6 +3,8 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   def index
     @order_form = OrderForm.new
+    return redirect_to root_path if current_user.id == @item.user_id || !@item.order.nil?
+
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
   end
 
