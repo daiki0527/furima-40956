@@ -6,5 +6,6 @@ FactoryBot.define do
     address { '川越市的場新町' }
     building { '10-8' }
     telephone_number { '00000000000' }
+    token { 'tok_abcdefghijk00000000000000000' }
   end
 end
