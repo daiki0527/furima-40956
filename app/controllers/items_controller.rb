@@ -23,7 +23,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    redirect_to action: :index
   end
 
   def destroy
