@@ -25,8 +25,6 @@ class ItemsController < ApplicationController
   def edit
     # rubocop:disable all
     if current_user.id != @item.user_id
-
-      redirect_to action: :index
     end
     # rubocop:disable all
   end
