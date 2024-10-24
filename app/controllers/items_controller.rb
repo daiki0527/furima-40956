@@ -23,9 +23,12 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    return if current_user && @item.order.nil?
+    # rubocop:disable all
+    if current_user.id != @item.user_id
 
-    redirect_to root_path
+      redirect_to action: :index
+    end
+    # rubocop:disable all
   end
 
   def destroy
