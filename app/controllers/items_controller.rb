@@ -23,10 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    # rubocop:disable all
-    if current_user.id != @item.user_id
-    end
-    # rubocop:disable all
+    redirect_to action: :index
   end
 
   def destroy
@@ -52,11 +49,10 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-  # rubocop:disable all
+
   def move_to_index
-    unless current_user.id == @item.user_id
-      redirect_to action: :index
-    end
+    return if current_user.id == @item.user_id
+
+    redirect_to action: :index
   end
-  # rubocop:disable all
 end

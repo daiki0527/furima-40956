@@ -55,7 +55,7 @@ RSpec.describe OrderForm, type: :model do
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include("Telephone number can't be blank")
       end
-      it 'telephone_numberが10文字未満なら購入できない' do
+      it 'telephone_numberが10桁以下だと購入できない' do
         @order_form.telephone_number = '123456789'
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include('Telephone number is invalid.')
@@ -70,7 +70,7 @@ RSpec.describe OrderForm, type: :model do
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include('Telephone number is invalid.')
       end
-      it 'telephone_numberは12桁以上だと購入できない' do
+      it 'telephone_numberは11桁以上だと購入できない' do
         @order_form.telephone_number = '123456789012'
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include('Telephone number is invalid.')
